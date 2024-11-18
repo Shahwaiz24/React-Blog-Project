@@ -1,6 +1,6 @@
-import FooterComponent from "./footer/footer";
-import HeaderComponent from "./header/header";
-import LoaderComponent from "./loader/loader";
+import FooterComponent from "./Footer/footer-component";
+import HeaderComponent from "./Header/header-component";
+import LoaderComponent from "./Loader/loader-component";
 
 export {
     HeaderComponent,
