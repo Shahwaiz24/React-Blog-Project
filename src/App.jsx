@@ -8,7 +8,7 @@ function App() {
   const [isloading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  let status = useSelector((state) => state.auth.status)
+  let status = useSelector((state) => state.auth.status).toString()
 
   useEffect(() => {
     let isLogin = JSON.parse(localStorage.getItem("isLogin")) || false
@@ -22,7 +22,6 @@ function App() {
       setLoading(false)
     } else {
       console.log("Logout")
-
       dispatch(logout()) 
       setLoading(false)
 
@@ -33,7 +32,7 @@ function App() {
   return (
     <>
       {
-        isloading == true ? <LoaderComponent /> : <h1>{status.toString()}</h1>
+        isloading == true ? <LoaderComponent /> : <h1>{status}</h1>
       }
     </>
   )
