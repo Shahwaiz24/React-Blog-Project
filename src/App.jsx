@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import {signUp,login,logout} from "./services/Slices/Auth-Slices";
 import { useDispatch, useSelector } from "react-redux";
-import LoaderComponent from "./component/loader/loader";
+import {LoaderComponent,HeaderComponent,FooterComponent} from "./component/index"
+import { Outlet } from "react-router-dom";
 
 function App() {
 
@@ -27,12 +28,14 @@ function App() {
 
     }
   },[])
-
-
   return (
     <>
       {
-        isloading == true ? <LoaderComponent /> : <h1>{status}</h1>
+        isloading == true ? <LoaderComponent /> : <div>
+          <  HeaderComponent />
+          <Outlet/>
+          <FooterComponent/>
+        </div>
       }
     </>
   )
