@@ -9,6 +9,7 @@ class BackEndAuthService {
     .setProject(config.BACKEND_PROJECT_ID);
     this.account = new Account(this.client);
    }
+   
    static async signUp({email,password}){
       try {
           let response = await this.account.create(ID.unique(), email.toString(),  password.toString());
