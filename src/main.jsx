@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import AppStore from './config/App-Store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { HomeComponent } from './component/index.js'
+import { HomeComponent } from './index.js'
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
