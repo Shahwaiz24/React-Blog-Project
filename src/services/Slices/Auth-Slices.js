@@ -11,8 +11,11 @@ const authSlice = createSlice({
     initialState,
     reducers:{
         login: (state,action) => {
-            state.status = true;
-            state.userData = action.payload.userData;
+           
+             state.status = true;
+             state.userData = action.payload.userData;
+             console.log("Status Login : ", state.status, " User Data: ", state.userData);
+           
         },
         signUp: (state, action) => {
             state.state = true;
@@ -20,9 +23,11 @@ const authSlice = createSlice({
         },
         logout: (state, action) => {
             state.status = false;
-            state.userData = null;
+            state.userData = null
+                ;
+            console.log("Status Login : ", state.status, " User Data: ", state.userData);
         }
     }
 });
-export const AuthReducers = authSlice.reducers;
+export const AuthReducers = authSlice.reducer;
 export const {login,signUp,logout} = authSlice.actions;

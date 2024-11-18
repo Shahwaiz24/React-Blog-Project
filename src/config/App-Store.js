@@ -3,7 +3,9 @@ import { AuthReducers } from "../services/Slices/Auth-Slices";
 
 const AppStore = configureStore({
     reducer: {
-       AuthReducers
+      auth:AuthReducers
     }
 
 });
+
+export default AppStore;
