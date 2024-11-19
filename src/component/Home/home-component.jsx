@@ -60,7 +60,7 @@ export default function HomeComponent() {
 
                         {/* Responsive Button */}
                         <ButtonComponent
-                            className="w-max mt-5 bg-white hover:bg-gray-200 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+                            className="w-max mt-5 hover:bg-gray-200 rounded-lg shadow-lg transition-transform transform hover:scale-105"
                             children={
                                 <h1 className="px-6 sm:px-10 md:px-16 py-2 sm:py-3 md:py-4 font-poppins font-medium text-xs sm:text-sm md:text-lg">
                                     Shopping Now
