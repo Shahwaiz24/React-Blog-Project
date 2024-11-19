@@ -1,10 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { HomeBannerImage, ButtonComponent } from ".";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 export default function HomeComponent() {
 
     const [showLoginFoam, setShowLoginFoam] = useState(false);
     const isLogin = useSelector((state) => state.auth.status);
+    const navigate = useNavigate();
+    let checkLogin = () => {
+        if (showLoginFoam == true) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    let handleOnShoppingClick = async () => {
+        let checking = await checkLogin();
+        if(checking == false)
+        {
+            setShowLoginFoam(false);
+            navigate("/login");
+        } else {
+            console.log("User is Logined")
+            }
+        }
     useEffect(() => {
         if (isLogin == true) {
             setShowLoginFoam(false)
@@ -49,7 +68,7 @@ export default function HomeComponent() {
                             }
                             onClick={(e) => {
                                 e.preventDefault();
-                                console.log("Tap");
+                                handleOnShoppingClick();
                             }}
                         />
                     </div>

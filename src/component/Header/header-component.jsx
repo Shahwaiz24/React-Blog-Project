@@ -22,7 +22,7 @@ export default function HeaderComponent() {
                     <div className={`flex justify-between items-center max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 pt-5 pb-5`}>
                         {/* Left section - 3legant text */}
                         <div className="flex items-center justify-start">
-                            <Link to="/" className="text-xl font-poppins font-medium tracking-widest text-black rounded-lg focus:outline-none focus:shadow-outline">
+                            <Link to="/" className="text-xl font-poppins font-medium  text-black rounded-lg focus:outline-none focus:shadow-outline">
                                 3legant.
                             </Link>
                         </div>
