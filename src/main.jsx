@@ -6,8 +6,9 @@ import { Provider } from 'react-redux'
 import AppStore from './config/App-Store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './pages/Home-Page.jsx'
+import LoginPage from './pages/Login-Page.jsx'
 
-// Define routes using createBrowserRouter
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/",  
         element: <HomePage />
+      },
+      {
+        path: "/login",
+        element: <LoginPage/>
       }
     ]
   }

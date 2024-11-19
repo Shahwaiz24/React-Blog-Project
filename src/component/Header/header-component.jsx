@@ -60,11 +60,11 @@ export default function HeaderComponent() {
                         <button
                             className="rounded-lg md:hidden focus:outline-none focus:shadow-outline "
                             onClick={() => setOpen(true)}
-                            // style={{ paddingTop: "10px"}}
+                  
                         >
-                            {/* Display the mobile icon or close icon based on the 'open' state */}
+                           
                             <img
-                                src={open ? closeIcon : mobileIcon}  // Dynamically change icon based on state
+                                src={open ? closeIcon : mobileIcon} 
                                 alt="Menu Icon"
                                 className="w-6 h-6"
                             />
@@ -73,7 +73,6 @@ export default function HeaderComponent() {
                 </div>
             </div>
 
-            {/* Mobile menu content */}
             {open && (
                 <div className="absolute top-0 left-0 w-full h-full bg-white p-4 md:hidden">
                     <div className="flex justify-end">
@@ -82,9 +81,9 @@ export default function HeaderComponent() {
                             onClick={() => setOpen(false)}
                             style={{ paddingTop: "10px" }}
                         >
-                            {/* Display the mobile icon or close icon based on the 'open' state */}
+                            
                             <img
-                                src={ closeIcon }  // Dynamically change icon based on state
+                                src={ closeIcon } 
                                 alt="Menu Icon"
                                 className="w-5 h-5"
                             />
