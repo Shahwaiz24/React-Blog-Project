@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import InputFieldsComponent from "../Input Fields/input-fields-component";
 import { ButtonComponent } from "../Home";
 
-export default function LoginFoamComponent() {
+export default function SignUpFoamComponent() {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
@@ -27,13 +28,15 @@ export default function LoginFoamComponent() {
     };
 
 
+
     const handleSubmit = (e) => {
-        e.preventDefault();
-            console.log("Email:", email);
-            console.log("Password:", password);
-            setEmail("");
-            setPassword("");
-      
+        e.preventDefault(); // Prevent default form submission
+        console.log("Email:", email);
+        console.log("Password:", password);
+        console.log("Name: ",name)
+        setEmail("");
+        setPassword("");
+        setName("")
     };
 
     return (
@@ -47,27 +50,32 @@ export default function LoginFoamComponent() {
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-poppins font-semibold text-center text-black mb-6">
                     3legant.
                 </h1>
+                {/* Name Field */}
+                <InputFieldsComponent
+                    placeholder="Full Name"
+                    required={true}
+                    value={name}
+                    onChanged={(e) => setName(e.target.value)}
+                    className="w-full mb-4 text-sm sm:text-base lg:text-lg"
+                />
 
                 {/* Email Field */}
-                <div className="mb-4">
-                    <InputFieldsComponent
-                        onInputValidation={handleEmailValidation}
-                        placeholder="Email"
-                        required={true}
-                        value={email}
-                        onChanged={(e) => setEmail(e.target.value)}
-                        className="w-full text-sm sm:text-base lg:text-lg"
-                    />
-                    
-                </div>
+                <InputFieldsComponent
+                    placeholder="Email"
+                    onInputValidation={handleEmailValidation}
+                    required={true}
+                    value={email}
+                    onChanged={(e) => setEmail(e.target.value)}
+                    className="w-full mb-4 text-sm sm:text-base lg:text-lg"
+                />
 
                 {/* Password Field with Toggle */}
                 <div className="relative w-full mb-6">
                     <InputFieldsComponent
                         placeholder="Password"
+                        onInputValidation={handlePasswordValidation}
                         type={showPassword ? "text" : "password"} // Toggle between "text" and "password"
                         value={password}
-                        onInputValidation={handlePasswordValidation}
                         required={true}
                         onChanged={(e) => setPassword(e.target.value)}
                         className="w-full pr-10"
@@ -79,7 +87,6 @@ export default function LoginFoamComponent() {
                     >
                         {showPassword ? "Hide" : "Show"} {/* Text or icon */}
                     </button>
-                    
                 </div>
 
                 {/* Submit Button */}
@@ -97,9 +104,9 @@ export default function LoginFoamComponent() {
                             Forgot Password?
                         </h1>
                     </Link>
-                    <Link to={"/signup"}>
+                    <Link to={"/login"}>
                         <h1 className="font-poppins font-medium hover:text-customNavGreen">
-                            Sign Up
+                            Login
                         </h1>
                     </Link>
                 </div>

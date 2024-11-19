@@ -4,6 +4,8 @@ import LoaderComponent from "./component/Loader/loader-component";
 import HomeComponent from "./component/Home/home-component";
 import ButtonComponent from "./component/Button/button-component";
 import LoginFoamComponent from "./component/Login Foam/login-foam-component";
+import SignUpFoamComponent from "./component/SignUp Foam/sign-up-foam-component";
+
 
 export {
     HeaderComponent,
@@ -11,5 +13,6 @@ export {
     LoaderComponent,
     HomeComponent,
     ButtonComponent,
-    LoginFoamComponent
+    LoginFoamComponent,
+    SignUpFoamComponent
 }

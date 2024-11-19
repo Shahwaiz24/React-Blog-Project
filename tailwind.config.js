@@ -13,6 +13,16 @@ export default {
         sans: ['Roboto', 'Arial', 'sans-serif'],
         poppins: ['Poppins'],
       },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1rem' }], // For extra-small text
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }], // For small text
+        'base': ['1rem', { lineHeight: '1.5rem' }], // Default size
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }], // Large text
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+      },
     },
   },
   plugins: [],
