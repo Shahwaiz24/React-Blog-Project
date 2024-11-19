@@ -1,8 +1,7 @@
 import React, { useEffect, useState,useId } from "react";
 import { HomeBannerImage, ButtonComponent, ProductCardComponent, CardSliderComponent } from ".";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import "./home-component.css"
+import { useNavigate , Link} from "react-router-dom";
 export default function HomeComponent() {
 
     const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -204,9 +203,9 @@ export default function HomeComponent() {
             <div>
                 <div className="flex px-16 pt-8 justify-between">
                     <h1 className="font-medium font-poppins text-3xl text-black">Featured</h1>
-                    <h1 className="underline font-poppins font-light text-customNavGreen text-base">View all.</h1>
+                    <Link to={""}> <h1 className="underline font-poppins font-light text-customNavGreen text-base">View all.</h1></Link>
                 </div>
-                <div className="max-h-fit w-full px-12">
+                <div className="max-h-fit w-full pl-12">
                     <CardSliderComponent products={products} />
                 </div>
                </div>
