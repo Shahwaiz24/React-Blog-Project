@@ -66,7 +66,7 @@ export default function HomeComponent() {
                                     Shopping Now
                                 </h1>
                             }
-                            onClick={(e) => {
+                            onClickbtn={(e) => {
                                 e.preventDefault();
                                 handleOnShoppingClick();
                             }}

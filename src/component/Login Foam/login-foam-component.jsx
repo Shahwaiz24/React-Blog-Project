@@ -11,6 +11,8 @@ export default function LoginFoamComponent() {
         e.preventDefault(); // Prevent default form submission
         console.log("Email:", email);
         console.log("Password:", password);
+        setEmail("");
+        setPassword("");
         // Add your custom login logic here
     };
 
