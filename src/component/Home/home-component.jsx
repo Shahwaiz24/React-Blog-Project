@@ -146,6 +146,13 @@ let bannerImageIndex = 1;
 
   const isLogin = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  let checkLogin = () => {
+    if (showLoginFoam == true) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
   // Intersection Observer for Banner Section
   const { ref: bannerRef, inView: bannerInView } = useInView({
