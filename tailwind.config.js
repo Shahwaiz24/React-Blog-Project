@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        customNavGreen:"#38CB89"
+        customNavGreen:"#38CB89",
+        customBgProduct:"#F3F5F7",
+        customRatingStarNonFill:"#343839"
       },
       fontFamily: {
         sans: ['Roboto', 'Arial', 'sans-serif'],

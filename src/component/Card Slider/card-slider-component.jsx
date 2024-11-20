@@ -3,12 +3,12 @@ import { ProductCardComponent } from '../Home';
 
 function CardSliderComponent({ products }) {
     return (
-        <div className="relative mx-auto bg-gray-100 p-2 sm:p-4">
-            <div className="absolute right-5 top-5 z-10 rounded-full bg-gray-600 px-2 text-center text-sm text-white">
+        <div className="relative mx-auto ">
+            <div className=" absolute right-5 top-5 z-10 rounded-full bg-gray-600  text-center text-sm text-white">
             </div>
 
             <div
-                className="relative h-80 w-full overflow-x-auto scroll-smooth"
+                className="relative h-fit w-full overflow-x-auto scroll-smooth"
                 style={{
                     scrollSnapType: 'x mandatory',
                     scrollPadding: '0 20px',
@@ -17,7 +17,7 @@ function CardSliderComponent({ products }) {
                 }}
             >
                 <div
-                    className="flex space-x-4"
+                    className="flex space-x-7"
                     style={{
                         minWidth: `calc(280px * ${products.length})`,
                     }}

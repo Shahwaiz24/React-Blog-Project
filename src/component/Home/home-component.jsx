@@ -201,11 +201,11 @@ export default function HomeComponent() {
             {/* Slider Container */}
         
             <div>
-                <div className="flex px-16 pt-8 justify-between">
-                    <h1 className="font-medium font-poppins text-3xl text-black">Featured</h1>
+                <div className="flex px-4 sm:px-8 md:px-16 lg:px-32 pt-8 justify-between">
+                    <h1 className="font-bold font-poppins text-3xl text-black">Featured</h1>
                     <Link to={""}> <h1 className="underline font-poppins font-light text-customNavGreen text-base">View all.</h1></Link>
                 </div>
-                <div className="max-h-fit w-full pl-12">
+                <div className="max-h-fit w-full px-4 sm:px-8 md:px-16 lg:px-32">
                     <CardSliderComponent products={products} />
                 </div>
                </div>
