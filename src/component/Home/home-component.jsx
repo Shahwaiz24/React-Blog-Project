@@ -159,6 +159,7 @@ export default function HomeComponent() {
 
     return (
         <div className="h-full w-full">
+            {/* First Banner Container */}
             <div className="relative w-full max-h-fit">
                 {/* Background Image */}
                 <img
@@ -205,7 +206,7 @@ export default function HomeComponent() {
                     <h1 className="font-bold font-poppins text-3xl text-black">Featured</h1>
                     <Link to={""}> <h1 className="underline font-poppins font-light text-customNavGreen text-base">View all.</h1></Link>
                 </div>
-                <div className="max-h-fit w-full px-4 sm:px-8 md:px-16 lg:px-32">
+                <div className="max-h-fit w-full pl-4 sm:pl-8 md:pl-16 lg:pl-32">
                     <CardSliderComponent products={products} />
                 </div>
                </div>

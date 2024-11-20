@@ -9,9 +9,9 @@ export default function ProductCardComponent({
     rating = 2.5,
 }) {
     return (
-        <div className="relative flex flex-col p-4 w-52">
+        <div className="relative flex flex-col p-4 w-52 sm:w-64 md:w-72 transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
             {/* Image */}
-            <div className="mt-4 bg-customBgProduct h-52 w-full">
+            <div className="mt-4 bg-customBgProduct h-52 w-full sm:h-64 md:h-72 lg:h-80">
                 <img
                     src={img}
                     alt="card-image"
