@@ -142,6 +142,7 @@ export default function HomeComponent() {
         description: "True wireless earbuds with noise-cancelling technology for an immersive music experience."
     },
 ];
+let bannerImageIndex = 1;
 
   const isLogin = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
@@ -169,6 +170,7 @@ export default function HomeComponent() {
   };
 
   useEffect(() => {
+    bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
     if (isLogin) {
       setShowLoginFoam(false);
       console.log("Login is True");
@@ -189,7 +191,7 @@ export default function HomeComponent() {
       >
         {/* Background Image */}
         <img
-          src={HomeBannerImage1}
+          src={bannerImages[bannerImageIndex]}
           alt="Banner"
           className="w-full h-auto object-cover"
         />
