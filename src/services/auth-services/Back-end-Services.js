@@ -3,7 +3,7 @@ import config from "../../config/Confg-Variable";
 import { useDispatch } from "react-redux";
 import { login, saveUserData } from "../Slices/Auth-Slices";
 
-class BackEndAuthService {
+export default class BackEndAuthService {
    client = new Client();
    dispatch = useDispatch();
    account;
@@ -142,4 +142,3 @@ return false;
    }
 }
 
-const authServices = new BackEndAuthService();

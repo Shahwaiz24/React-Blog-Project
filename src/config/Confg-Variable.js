@@ -5,8 +5,5 @@ const config = {
     BACKEND_BUCKET_ID: String(import.meta.env.VITE_BUCKET_ID),
     BACKEND_PRODUCT_COLLECTION_ID: String(import.meta.env.VITE_PRODUCT_COLLECTION_ID),
     BACKEND_USER_COLLECTION_ID: String(import.meta.env.VITE_USER_COLLECTION_ID),
-
-
-
 }
 export default config;

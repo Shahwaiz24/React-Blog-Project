@@ -1,20 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputFieldsComponent from "../Input Fields/input-fields-component";
 import { ButtonComponent } from "../Home";
+import BackEndAuthService from "../../services/auth-services/Back-end-Services";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../services/Slices/Auth-Slices";
 
 export default function SignUpFoamComponent() {
     const [email, setEmail] = useState("");
+    const [isLoading, setLoading] = useState(false);
+    const [isError, setError] = useState(false);
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleEmailValidation = (event) => {
         const value = event.target.value;
         if (!value.includes("@") || !value.endsWith(".com")) {
             event.target.setCustomValidity("Email must include '@' and end with '.com'.");
         } else {
-            event.target.setCustomValidity(""); // Clear the error
+            event.target.setCustomValidity("");
         }
     };
 
@@ -29,14 +36,26 @@ export default function SignUpFoamComponent() {
 
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent default form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
         console.log("Email:", email);
         console.log("Password:", password);
-        console.log("Name: ",name)
-        setEmail("");
-        setPassword("");
-        setName("")
+        console.log("Name: ", name)
+        let signUpRequest = await BackEndAuthService.signUp(email.toString(), password.toString(), name.toString())
+        if (signUpRequest == true) {
+            setLoading(false);
+            setEmail("");
+            setPassword("");
+            setName("")
+            dispatch(signUp());
+            navigate("/")
+        }
+        else {
+            setLoading(false);
+            setError(true)
+        }
+       
     };
 
     return (
@@ -50,6 +69,12 @@ export default function SignUpFoamComponent() {
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-poppins font-semibold text-center text-black mb-6">
                     3legant.
                 </h1>
+                {
+                    isError == true && <div className="pt-2 pl-2 pb-2 flex flex-row justify-start ">
+                        <h1>❗</h1>
+                        <h1 style={{color:"red"}} className="pl-1">An Error Occured, Please Try Again Later</h1>
+</div>
+                }
                 {/* Name Field */}
                 <InputFieldsComponent
                     placeholder="Full Name"
@@ -91,10 +116,14 @@ export default function SignUpFoamComponent() {
 
                 {/* Submit Button */}
                 <ButtonComponent
+                    bgColor={`${isLoading == true ? "bg-black cursor-not-allowed" : "bg-customNavGreen  hover:bg-gray-800"}`}
                     type="submit"
-                    className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition-all duration-200 text-sm sm:text-base lg:text-lg"
-                >
-                    <h1 className="font-poppins font-medium">Login</h1>
+                    className={`w-full py-2 rounded-md flex justify-center items-center text-white text-sm sm:text-base lg:text-lg transition-all duration-200 `}                >
+                    {
+                        isLoading == true ? (
+                            <div className="animate-spin rounded-full h-7 w-7 border-t-4 border-white border-opacity-100"></div>
+                        ) : <h1 className="font-poppins font-medium">SignUp</h1>
+                   } 
                 </ButtonComponent>
 
                 {/* Links */}

@@ -5,6 +5,8 @@ import { ButtonComponent } from "../Home";
 
 export default function LoginFoamComponent() {
     const [email, setEmail] = useState("");
+    const [isError, setError] = useState(false);
+
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
@@ -43,6 +45,12 @@ export default function LoginFoamComponent() {
                 className="w-full max-w-md bg-white border border-gray-300 px-6 py-8 sm:px-8 sm:py-10 shadow-lg rounded-lg"
                 onSubmit={handleSubmit}
             >
+                {
+                    isError == true && <div className="pt-2 pl-2 pb-2 flex flex-row justify-start ">
+                        <h1>❗</h1>
+                        <h1 style={{ color: "red" }} className="pl-1">An Error Occured, Please Try Again Later</h1>
+                    </div>
+                }
                 {/* Title */}
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-poppins font-semibold text-center text-black mb-6">
                     3legant.

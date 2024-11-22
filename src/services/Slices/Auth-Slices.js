@@ -18,7 +18,7 @@ const authSlice = createSlice({
            
         },
         signUp: (state, action) => {
-            state.state = true;
+            state.status = true;
             state.userId = JSON.parse(localStorage.getItem("userId"));
         },
         logout: (state, action) => {
