@@ -7,7 +7,7 @@ export default function CatogriesGridComponent({ catogires, img = AirPods }) {
             {catogires.map((item, index) => (
                 <div
                     key={index}
-                    className="flex flex-col justify-center items-center bg-gray-100"
+                    className="flex flex-col justify-center items-center transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl bg-gray-100"
                 >
                     <div className="h-96 w-full">
                         <img src={img} alt="" className="object-contain w-full h-full" />
