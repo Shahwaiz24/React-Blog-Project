@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
+import OfferBannerComponent from "../Offer Banner/offer_banner_component";
 
 export default function HomeComponent() {
   const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -287,6 +288,10 @@ export default function HomeComponent() {
 
         <CatogriesGridComponent catogires={catogries}></CatogriesGridComponent>
 
+      </div>
+      {/* Offer Section */}
+      <div className="w-full h-fit">
+        <OfferBannerComponent></OfferBannerComponent>
       </div>
     </div>
   );

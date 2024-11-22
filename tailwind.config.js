@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         customNavGreen:"#38CB89",
-        customBgProduct:"#F3F5F7",
+        customBgProduct: "#F3F5F7",
+        customBgOfferBanner: "#141718",
         customRatingStarNonFill:"#343839"
       },
       fontFamily: {
