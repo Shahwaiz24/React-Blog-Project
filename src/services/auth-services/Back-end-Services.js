@@ -1,7 +1,7 @@
 import { Client, Account, ID, Databases } from "appwrite";
 import config from "../../config/Confg-Variable";
 import { useDispatch } from "react-redux";
-import { login } from "../Slices/Auth-Slices";
+import { login, saveUserData } from "../Slices/Auth-Slices";
 
 class BackEndAuthService {
    client = new Client();
@@ -66,10 +66,7 @@ class BackEndAuthService {
            );
 
            if (userDocument) {
-               // Save document ID in localStorage
                localStorage.setItem("userId",JSON.stringify(userDocument.$id));
-
-               // Create a session using Appwrite
                let session = await this.account.createEmailPasswordSession(
                    email.toString(),
                    password.toString()
@@ -114,7 +111,7 @@ static async getUser({ UserdocId,dispatch }) {
         };
 
        
-        dispatch(login({
+        dispatch(saveUserData({
          payload: userDetails,
      }));
            return true;

@@ -27,8 +27,11 @@ const authSlice = createSlice({
             state.userId = "";
             
             console.log("Status Login : ", state.status, " User Data: ", state.userData);
+        },
+        saveUserData: (state, action) => {
+            state.userData = action.payload.userDetails;
         }
     }
 });
 export const AuthReducers = authSlice.reducer;
-export const {login,signUp,logout} = authSlice.actions;
+export const {login,signUp,logout,saveUserData} = authSlice.actions;
