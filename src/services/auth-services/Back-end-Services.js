@@ -1,8 +1,11 @@
 import { Client, Account, ID, Databases } from "appwrite";
 import config from "../../config/Confg-Variable";
+import { useDispatch } from "react-redux";
+import { login } from "../Slices/Auth-Slices";
 
 class BackEndAuthService {
    client = new Client();
+   dispatch = useDispatch();
    account;
    database;
    constructor(){
@@ -31,7 +34,7 @@ class BackEndAuthService {
               );
   
               if (createUser) {
-                  localStorage.setItem("userId", createUser.$id);
+                  localStorage.setItem("userId", JSON.stringify(createUser.$id));
                   console.log("User successfully signed up with email:", email);
                   return true; // Success
               } else {
@@ -64,7 +67,7 @@ class BackEndAuthService {
 
            if (userDocument) {
                // Save document ID in localStorage
-               localStorage.setItem("userDocId", userDocument.$id);
+               localStorage.setItem("userId",JSON.stringify(userDocument.$id));
 
                // Create a session using Appwrite
                let session = await this.account.createEmailPasswordSession(
@@ -93,25 +96,40 @@ class BackEndAuthService {
    }
 }
 
-   static async getUser(){
-      try {
-         
-         let response = await this.account.get();
-         if(response){
-            console.log("Response User: ",response.toString());
-            return true;
-         }else{
-           console.log("Response User: ",response.toString());
-           return false;
-         }
-      } catch (error) {
-         console.log("Response User: ",error.toString());
-return null;
-      }
+static async getUser({ UserdocId,dispatch }) {
+   try {
+       // Fetch the document using the provided document ID
+       let userDocument = await this.databases.getDocument(
+           config.BACKEND_DATABASE_ID,
+           config.BACKEND_USER_COLLECTION_ID,
+           UserdocId.toString()
+       );
+
+       if (userDocument) {
+           console.log("User Document fetched successfully:", userDocument);
+           const userDetails = {
+            name: userDocument.name.toString(),
+            email: userDocument.email.toString(),
+            password: userDocument.password.toString(),
+        };
+
+       
+        dispatch(login({
+         payload: userDetails,
+     }));
+           return true;
+       } else {
+           console.log("Failed to fetch document for ID:", UserdocId);
+           return false; // Document not found
+       }
+   } catch (error) {
+       console.error("Error fetching user document for ID:", UserdocId, error.message || error.toString());
+       return false; // Error occurred
    }
+}
+
    static async logoutUser(){
       try {
-         
          let response = await this.account.deleteSessions();
          if(response){
             console.log("Response User: ",response.toString());
@@ -122,7 +140,7 @@ return null;
          }
       } catch (error) {
          console.log("Response User: ",error.toString());
-return null;
+return false;
       }
    }
 }
