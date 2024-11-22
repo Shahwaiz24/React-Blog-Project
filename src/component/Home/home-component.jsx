@@ -11,6 +11,7 @@ import {
 } from ".";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 
 export default function HomeComponent() {
   const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -20,6 +21,23 @@ export default function HomeComponent() {
     HomeBannerImage3,
     HomeBannerImage4
   ];
+  const catogries = [
+    {
+      title:"Golf Clubs"
+    },
+    {
+      title: "Golf Balls"
+    },
+    {
+      title: "Golf Bags"
+    }, {
+      title: "Clothing & Rainwear"
+    }, {
+      title: "Footwear"
+    }, {
+      title: "Accessories"
+    }
+  ]
   const products = [
     {
       title: "Wireless Headphones",
@@ -260,6 +278,15 @@ export default function HomeComponent() {
         <div className="max-h-fit w-full pl-4 sm:pl-8 md:pl-16 lg:pl-32">
           <CardSliderComponent products={products} />
         </div>
+      </div>
+      {/* Catogries Section */}
+      <div className="w-full h-fit bg-white text-center pt-20 pb-5 px-40">
+        <h1 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl pb-8 sm:pb-12 md:pb-16 text-center">
+          Shop by Categories
+        </h1>
+
+        <CatogriesGridComponent catogires={catogries}></CatogriesGridComponent>
+
       </div>
     </div>
   );
