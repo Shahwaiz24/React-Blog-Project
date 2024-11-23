@@ -37,11 +37,11 @@ export default function OfferBannerComponent({ img = OfferBanner }) {
     return (
         <div className="w-full h-fit flex flex-col md:flex-row justify-start">
             {/* Left Image */}
-            <div className="w-full md:w-6/12 h-auto max-h-full ">
+            <div className="w-full md:w-6/12 h-auto ">
     <img 
         src={img} 
         alt="" 
-        className="object-cover w-full h-auto max-w-full max-h-full " 
+        className="object-contain w-full h-auto max-w-full max-h-full aspect-auto" 
     />
 </div>
 
