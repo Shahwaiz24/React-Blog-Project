@@ -295,7 +295,7 @@ export default function HomeComponent() {
         <OfferBannerComponent></OfferBannerComponent>
       </div>
       {/* Collection Section */}
-      <div  className="w-full pt-20 px-40">
+      <div  className="w-full h-fit">
 <ShopCollection>
 
 </ShopCollection>

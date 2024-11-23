@@ -1,9 +1,7 @@
 import React from "react";
-import CollectionImage from "../Shop Collection/collection-img/collection-image.png"
-import menCollectionImage from "../Shop Collection/collection-img/men-collection.png"
-import womenCollectionImage from "../Shop Collection/collection-img/womens-collection.png"
-
-
+import CollectionImage from "../Shop Collection/collection-img/collection-image.png";
+import menCollectionImage from "../Shop Collection/collection-img/men-collection.png";
+import womenCollectionImage from "../Shop Collection/collection-img/womens-collection.png";
 
 const collections = [
   {
@@ -18,79 +16,73 @@ const collections = [
 
 const ShopCollection = () => {
   return (
-    <div className="w-full h-fit">
+    <div className="w-full h-fit pt-20 px-4 md:px-20 lg:px-60">
       {/* Heading */}
-      <h2 className="text-4xl font-medium font-poppins mb-8">Shop Collection</h2>
-
-
+      <h2 className="text-3xl md:text-4xl font-semibold font-poppins mb-8 text-center md:text-left">
+        Shop Collection
+      </h2>
 
       {/* Grid */}
-      <div className="flex flex-row gap-8 w-full ">
-      <div className="relative h-fit  overflow-hidden rounded-lg">
-  {/* Image */}
-  <img
-    src={CollectionImage}
-    alt="Juniors Set"
-    className="w-full h-full object-contain"
-  />
+      <div className="flex flex-col md:flex-row gap-8 w-full h-fit">
+        {/* First Collection */}
+        <div className="relative h-fit w-full md:w-2/4 rounded-lg">
+          {/* Image */}
+          <img
+            src={CollectionImage}
+            alt="Juniors Set"
+            className="w-full h-full object-contain"
+          />
 
-  {/* Text Overlay */}
-  <div className="absolute bottom-10 px-10">
-    {/* Title */}
-    <h1 className="font-poppins font-bold text-2xl text-black">
-      Juniors Set
-    </h1>
+          {/* Text Overlay */}
+          <div className="absolute bottom-10 px-10">
+            {/* Title */}
+            <h1 className="font-poppins font-bold text-xl md:text-1xl text-black">
+              Juniors Set
+            </h1>
 
-    {/* Subtext */}
-    
-    <h1 className="font-poppins font-medium text-base text-black-300">
-      Collections →
-    </h1>
-    <h1 className={`border-b-2 border-black w-28 `}></h1>
+            {/* Subtext */}
+            <h2 className="font-poppins font-medium text-sm md:text-base text-black-300">
+              Collections →
+            </h2>
+            <h1 className={`border-b-2 border-black w-28`}></h1>
+          </div>
+        </div>
 
+        {/* Collections Loop */}
+        <div className="flex flex-col gap-5 w-full md:w-2/4">
+          {collections.map((collect, index) => {
+            return (
+              <div
+                key={index}
+                className="relative h-fit overflow-hidden rounded-lg"
+              >
+                {/* Image */}
+                <img
+                  src={collect.image}
+                  alt={collect.name}
+                  className="w-full h-full object-contain"
+                />
 
-  </div>
-</div>
-<div className="flex flex-col gap-5 justify-between">
-{collections.map((collect, index) =>{
-    return <div key={index} className="relative h-80 overflow-hidden rounded-lg">
-    {/* Image */}
-    <img
-      src={collect.image}
-      alt="Juniors Set"
-      className="w-full h-full object-contain"
-    />
-  
-    {/* Text Overlay */}
-    <div className="absolute bottom-10 left-0 right-0 px-10">
-      {/* Title */}
-      <h1 className="font-poppins font-bold text-2xl text-black">
-        {collect.name}
-      </h1>
-  
-      {/* Subtext */}
-      
-      <h1 className="font-poppins font-medium text-base text-black-300">
-        Collections →
-      </h1>
-      <h1 className={`border-b-2 border-black w-28 `}></h1>
-  
-  
-    </div>
-  </div>
-})}
-</div>
+                {/* Text Overlay */}
+                <div className="absolute bottom-10 left-0 right-0 px-10">
+                  {/* Title */}
+                  <h1 className="font-poppins font-bold text-xl md:text-1xl text-black">
+                    {collect.name}
+                  </h1>
 
-
-</div>
-
-      
-   
-   
+                  {/* Subtext */}
+                  <h2 className="font-poppins font-medium text-sm md:text-base text-black-300">
+                    Collections →
+                  </h2>
+                  <h1 className={`border-b-2 border-black w-28`}></h1>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default ShopCollection;
-
-
