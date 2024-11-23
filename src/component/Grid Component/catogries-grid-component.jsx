@@ -9,7 +9,7 @@ export default function CatogriesGridComponent({ catogires, img = AirPods }) {
                     key={index}
                     className="flex flex-col justify-center items-center transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl bg-gray-100"
                 >
-                    <div className="h-96 w-full">
+                   <div className="w-full h-60 sm:h-64 md:h-72 lg:h-80 flex">
                         <img src={img} alt="" className="object-contain w-full h-full" />
                     </div>
 

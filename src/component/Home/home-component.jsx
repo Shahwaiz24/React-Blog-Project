@@ -8,6 +8,7 @@ import {
   ButtonComponent,
   ProductCardComponent,
   CardSliderComponent,
+  ShopCollection,
 } from ".";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -281,7 +282,7 @@ export default function HomeComponent() {
         </div>
       </div>
       {/* Catogries Section */}
-      <div className="w-full h-fit bg-white text-center pt-20 pb-5 px-40">
+      <div className="w-full h-fit bg-white text-center pt-20 pb-10 px-40">
         <h1 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl pb-8 sm:pb-12 md:pb-16 text-center">
           Shop by Categories
         </h1>
@@ -292,6 +293,12 @@ export default function HomeComponent() {
       {/* Offer Section */}
       <div className="w-full h-fit">
         <OfferBannerComponent></OfferBannerComponent>
+      </div>
+      {/* Collection Section */}
+      <div  className="w-full pt-20 px-40">
+<ShopCollection>
+
+</ShopCollection>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import HomeBannerImage4 from "./home-Images/home-First-Banner-4.png"
 import ButtonComponent from "../Button/button-component"
 import ProductCardComponent from "../Product Card/product-card-component"
 import CardSliderComponent from "../Card Slider/card-slider-component"
+import ShopCollection from "../Shop Collection/shop-collection-component"
 
 export {
     HomeBannerImage1,
@@ -13,5 +14,7 @@ export {
     HomeBannerImage4,
     ButtonComponent,
     ProductCardComponent,
-    CardSliderComponent
+    CardSliderComponent,
+    ShopCollection
+
 }
