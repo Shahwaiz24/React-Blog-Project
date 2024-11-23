@@ -37,40 +37,49 @@ export default function OfferBannerComponent({ img = OfferBanner }) {
     return (
         <div className="w-full h-fit flex flex-col md:flex-row justify-start">
             {/* Left Image */}
-            <div className="w-full md:w-6/12 h-fit">
-                <img src={img} alt="" className="object-contain h-full w-full" />
-            </div>
+            <div className="w-full md:w-6/12 h-auto">
+    <img 
+        src={img} 
+        alt="" 
+        className="object-contain w-full h-auto max-w-full max-h-full" 
+    />
+</div>
+
 
             {/* Right Content */}
-            <div className="bg-customBgOfferBanner pb-5 pl-8 md:pl-20 pt-16 md:pt-24 flex flex-col justify-start w-full md:w-6/12">
-                <h1 className="text-customNavGreen font-poppins font-semibold text-lg sm:text-xl md:text-2xl pb-4">
+            <div className="bg-customBgOfferBanner px-5 sm:px-10 md:px-20 pt-10 sm:pt-16 md:pt-24 pb-10 flex flex-col justify-start w-full md:w-6/12">
+                <h1 className="text-customNavGreen font-poppins font-semibold text-base sm:text-lg md:text-xl lg:text-2xl pb-4">
                     Limited Edition
                 </h1>
-                <h1 className="text-white font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl pb-5">
+                <h1 className="text-white font-poppins font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl pb-5">
                     Hurry up! 30% OFF
                 </h1>
-                <h1 className="text-gray-400 font-poppins font-extralight text-lg sm:text-xl pb-6">
+                <h1 className="text-gray-400 font-poppins font-light text-sm sm:text-lg md:text-xl pb-6">
                     Find clubs that are right for your game
                 </h1>
-                <h1 className="text-white font-poppins font-normal text-lg sm:text-xl pb-2">
+                <h1 className="text-white font-poppins font-normal text-sm sm:text-lg md:text-xl pb-4">
                     Offer expires in:
                 </h1>
 
                 {/* Time Remaining */}
-                <div className="flex-wrap pb-10 flex justify-start gap-4">
-                    {timeRemaining.map((value, index) => {
-                        return (
-                            <div key={index} className="bg-white text-center p-6 rounded-lg">
-                                <h1 className="font-poppins font-medium text-2xl sm:text-3xl md:text-4xl">{value}</h1>
-                            </div>
-                        );
-                    })}
+                <div className="flex flex-wrap justify-start gap-4 pb-10">
+                    {timeRemaining.map((value, index) => (
+                        <div key={index} className="bg-white text-center p-4 sm:p-5 md:p-6 rounded-lg shadow-md">
+                            <h1 className="font-poppins font-medium text-lg sm:text-xl md:text-2xl lg:text-3xl">
+                                {value}
+                            </h1>
+                        </div>
+                    ))}
                 </div>
-                <ButtonComponent className="w-max  hover:bg-gray-200  rounded-lg shadow-lg transition-transform transform hover:scale-105"
+
+                <ButtonComponent
+                    className="w-max bg-customNavGreen hover:bg-gray-300 rounded-lg shadow-lg transition-transform transform hover:scale-105"
                     children={
-                        <h1 className="px-8 sm:px-10 md:px-16 py-0 sm:py-3 md:py-4 font-poppins font-medium text-xs sm:text-sm md:text-lg">
+                        <h1 className="px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 font-poppins font-medium text-sm sm:text-base md:text-lg">
                             Shop now
-                        </h1>}></ ButtonComponent>
+                        </h1>
+                    }
+                ></ButtonComponent>
             </div>
         </div>
     );
