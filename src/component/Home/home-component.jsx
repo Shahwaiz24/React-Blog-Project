@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 import OfferBannerComponent from "../Offer Banner/offer_banner_component";
+import LatestArticleComponent from "../Article/latest-article-component";
 
 export default function HomeComponent() {
   const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -299,6 +300,9 @@ export default function HomeComponent() {
 <ShopCollection>
 
 </ShopCollection>
+      </div>
+      <div className="w-full h-fit">
+        <LatestArticleComponent></LatestArticleComponent>
       </div>
     </div>
   );
