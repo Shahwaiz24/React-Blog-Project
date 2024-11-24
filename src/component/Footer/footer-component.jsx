@@ -101,7 +101,7 @@ export default function FooterComponent() {
         </div>
         <div className="flex justify-start mt-10">
         <div className="border-x h-6 border-customFooterGray  "></div>
-        <div className="flex pl-5 flex-row justify-between">
+        <div className="flex pl-5 flex-row justify-between w-full h-fit">
             <div className="text-customFooterGray flex font-poppins font-normal text-sm">
                 <h1>
                 Privacy Policy
@@ -110,7 +110,12 @@ export default function FooterComponent() {
                 Terms & Conditions
                 </h1>
             </div>
-            <div>
+            <div className=" flex  justify-between gap-5">
+                {paymentLogos.map((eachLogo,index) =>{
+                    return <div key={index} className="bg-white p-3 rounded-lg">
+                        <img src={eachLogo} alt="" className="object contain w-full h-full"/>
+                    </div>
+                })}
 
             </div>
         </div>
