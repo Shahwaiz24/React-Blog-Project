@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
 import {
   HomeBannerImage1,
   HomeBannerImage2,
@@ -163,7 +162,8 @@ export default function HomeComponent() {
       description: "True wireless earbuds with noise-cancelling technology for an immersive music experience."
     },
   ];
-  let bannerImageIndex = 1;
+  let     bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
+
 
   const isLogin = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
