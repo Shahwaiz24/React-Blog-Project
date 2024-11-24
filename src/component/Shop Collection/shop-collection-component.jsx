@@ -25,7 +25,7 @@ const ShopCollection = () => {
       {/* Grid */}
       <div className="flex flex-col md:flex-row gap-8 w-full h-fit">
         {/* First Collection */}
-        <div className="relative h-fit w-full md:w-2/4 rounded-lg">
+        <div className="relative h-fit w-full md:w-2/4 rounded-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl bg-gray-100">
           {/* Image */}
           <img src={CollectionImage}
             alt="Juniors Set"
@@ -53,7 +53,7 @@ const ShopCollection = () => {
             return (
               <div
                 key={index}
-                className="relative h-fit overflow-hidden rounded-lg"
+                className="relative h-fit overflow-hidden rounded-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl bg-gray-100"
               >
                 {/* Image */}
                 <img
