@@ -5,18 +5,16 @@ import {
   HomeBannerImage2,
   HomeBannerImage3,
   HomeBannerImage4,
-  ButtonComponent,
-  ProductCardComponent,
-  CardSliderComponent,
-  ShopCollection,
-} from ".";
+  ShopCollection,} from ".";
 import { useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 import OfferBannerComponent from "../Offer Banner/offer_banner_component";
 import LatestArticleComponent from "../Article/latest-article-component";
 import NewsLetterComponent from "../News-Letter/news-letter-component";
 import InstagramNewsFeedComponent from "../Instagram-NewsFeed/instagram-newsfeed-component";
+import FirstBannerComponent from "../First-banner/first-banner-component";
+import SliderComponent from "../Slider Component/slider-component";
 
 export default function HomeComponent() {
   const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -177,17 +175,7 @@ export default function HomeComponent() {
     }
   }
 
-  // Intersection Observer for Banner Section
-  const { ref: bannerRef, inView: bannerInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
 
-  // Intersection Observer for Products Section
-  const { ref: productsRef, inView: productsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
   let handleOnShoppingClick = async () => {
     let checking = await checkLogin();
@@ -214,75 +202,15 @@ export default function HomeComponent() {
   return (
     <div className="h-full w-full">
       {/* First Banner Container */}
-      <div
-        ref={bannerRef}
-        className={`relative w-full max-h-fit transform transition-all duration-500 ${bannerInView ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"
-          }`}
-      >
-        {/* Background Image */}
-        <img
-          src={bannerImages[bannerImageIndex] ?? 0}
-          alt="Banner"
-          className="w-full h-auto object-cover"
-        />
-
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start">
-          <div
-            className={`flex flex-col px-4 sm:px-8 md:px-16 lg:px-32 space-y-5 transform transition-all duration-700 delay-300 ${bannerInView ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
-              }`}
-          >
-            <h1 className="text-white text-3xl sm:text-3xl md:text-5xl lg:text-7xl font-medium font-poppins leading-tight">
-              More than <br />
-              just a game.<br />
-              It’s a lifestyle.
-            </h1>
-
-            <p className="text-gray-300 font-poppins font-light text-sm sm:text-base md:text-lg lg:text-xl">
-              Whether you’re just starting out, have played{" "}
-              <br className="hidden md:block" />
-              your whole life or you're a Tour pro, your{" "}
-              <br className="hidden md:block" />
-              swing is like a fingerprint.
-            </p>
-
-            {/* Responsive Button */}
-            <ButtonComponent
-              className="w-max mt-5 hover:bg-gray-200 rounded-lg shadow-lg transition-transform transform hover:scale-105"
-              children={
-                <h1 className="px-6 sm:px-10 md:px-16 py-2 sm:py-3 md:py-4 font-poppins font-medium text-xs sm:text-sm md:text-lg">
-                  Shopping Now
-                </h1>
-              }
-              onClickbtn={(e) => {
-                e.preventDefault();
-                handleOnShoppingClick();
-              }}
-            />
-          </div>
-        </div>
+      <div className="w-full h-fit">
+      <FirstBannerComponent img={bannerImages[bannerImageIndex]}></FirstBannerComponent>
       </div>
+     
 
       {/* Slider Container */}
-      <div
-        ref={productsRef}
-        className={`transform transition-all duration-1000 ${productsInView ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
-          }`}
-      >
+      <div className="w-full h-fit">
+        <SliderComponent products={products}></SliderComponent>
 
-        <div className="flex px-4 sm:px-8 md:px-16 lg:px-32 pt-8 justify-between">
-          <h1 className="font-bold font-poppins text-3xl text-black">
-            Featured
-          </h1>
-          <Link to={""}>
-            <h1 className="underline font-poppins font-light text-customNavGreen text-base">
-              View all.
-            </h1>
-          </Link>
-        </div>
-
-        <div className="max-h-fit w-full pl-4 sm:pl-8 md:pl-16 lg:pl-32">
-          <CardSliderComponent products={products} />
-        </div>
       </div>
       {/* Catogries Section */}
       <div className="w-full h-fit bg-white text-center pt-20 pb-10 px-40">
