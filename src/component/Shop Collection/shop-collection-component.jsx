@@ -27,8 +27,7 @@ const ShopCollection = () => {
         {/* First Collection */}
         <div className="relative h-fit w-full md:w-2/4 rounded-lg">
           {/* Image */}
-          <img
-            src={CollectionImage}
+          <img src={CollectionImage}
             alt="Juniors Set"
             className="w-full h-full object-contain"
           />

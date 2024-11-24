@@ -302,7 +302,13 @@ export default function HomeComponent() {
 </ShopCollection>
       </div>
       <div className="w-full h-fit">
-        <LatestArticleComponent></LatestArticleComponent>
+        <LatestArticleComponent>
+
+        </LatestArticleComponent>
+      </div>
+      <div className="w-full h-fit">
+        
+
       </div>
     </div>
   );
