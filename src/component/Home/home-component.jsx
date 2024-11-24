@@ -16,6 +16,7 @@ import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 import OfferBannerComponent from "../Offer Banner/offer_banner_component";
 import LatestArticleComponent from "../Article/latest-article-component";
 import NewsLetterComponent from "../News-Letter/news-letter-component";
+import InstagramNewsFeedComponent from "../Instagram-NewsFeed/instagram-newsfeed-component";
 
 export default function HomeComponent() {
   const [showLoginFoam, setShowLoginFoam] = useState(false);
@@ -309,6 +310,11 @@ export default function HomeComponent() {
       </div>
       <div className="w-full h-fit">
         <NewsLetterComponent></NewsLetterComponent>
+
+      </div>
+
+      <div className="w-full h-fit">
+        <InstagramNewsFeedComponent></InstagramNewsFeedComponent>
 
       </div>
     </div>
