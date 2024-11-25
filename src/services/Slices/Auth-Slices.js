@@ -14,17 +14,22 @@ const authSlice = createSlice({
         login: (state,action) => {
              state.status = true;
              state.userId = localStorage.getItem("userId");
+             localStorage.setItem("isUserLogin",JSON.stringify(true))
              console.log("Status Login : ", state.status, " User Data: ", state.userData);
            
         },
         signUp: (state, action) => {
             state.status = true;
             state.userId = localStorage.getItem("userId");
+            localStorage.setItem("isUserLogin",JSON.stringify(true))
+
         },
         logout: (state, action) => {
             state.status = false;
             state.userData = null;
             state.userId = "";
+            localStorage.setItem("isUserLogin",JSON.stringify(false))
+
             
             console.log("Status Login : ", state.status, " User Data: ", state.userData);
         },

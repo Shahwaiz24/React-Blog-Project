@@ -15,6 +15,8 @@ import InstagramNewsFeedComponent from "../Instagram-NewsFeed/instagram-newsfeed
 import FirstBannerComponent from "../First-banner/first-banner-component";
 import SliderComponent from "../Slider Component/slider-component";
 import { login } from "../../services/Slices/Auth-Slices";
+import { AuthService } from "../../services/auth-services/Back-end-Services";
+import LoaderComponent from "../Loader/loader-component";
 
 export default function HomeComponent() {
   const bannerImages = [
@@ -163,48 +165,60 @@ export default function HomeComponent() {
     },
   ];
   let bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
-  const dispatch = useDispatch(login());
+  const dispatch = useDispatch();
+  const [isError , setError] = useState(false);
+  const [isLoading,setLoading] = useState(false);
 
 
 
-
+let getUserData = async (userId) => {
+  setLoading(true)
+let apiRequest = await AuthService.getUser({userId:userId, dispatch:dispatch});
+if(apiRequest != true){
+setError(true);
+setLoading(false)
+}else{
+  setError(false);
+setLoading(false)
+}
+}
 
 
 
   useEffect(() => {
-    bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
-let isUserlogin = localStorage.getItem("userId");
+let isUserlogin = JSON.parse(localStorage.getItem("isUserLogin"));
     if (isUserlogin) {
       dispatch(login());
       console.log(" User Is Login ");
-
+      let userId = localStorage.getItem("userId");
+getUserData(userId);
     } else {
       console.log("User Not Logged In");
     }
   }, []);
   const isLogin = useSelector((state) => state.auth.status);
 
-  return (
-    <div className="h-full w-full">
+  return isLoading == true ? (<LoaderComponent></LoaderComponent>) : 
+   ( <div className="h-full w-full">
       {/* First Banner Container */}
       <div className="w-full h-fit">
       <FirstBannerComponent img={bannerImages[bannerImageIndex]} islogin={isLogin}></FirstBannerComponent>
       </div>
      
-
+    
       {/* Slider Container */}
       <div className="w-full h-fit">
         <SliderComponent products={products}></SliderComponent>
-
+    
       </div>
       {/* Catogries Section */}
       <div className="w-full h-fit bg-white text-center pt-20 pb-10 px-40">
         <h1 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl pb-8 sm:pb-12 md:pb-16 text-center">
           Shop by Categories
         </h1>
-
+    
         <CatogriesGridComponent catogires={catogries}></CatogriesGridComponent>
-
+    
       </div>
       {/* Offer Section */}
       <div className="w-full h-fit">
@@ -212,24 +226,23 @@ let isUserlogin = localStorage.getItem("userId");
       </div>
       {/* Collection Section */}
       <div  className="w-full h-fit">
-<ShopCollection>
-
-</ShopCollection>
+    <ShopCollection>
+    
+    </ShopCollection>
       </div>
       <div className="w-full h-fit">
         <LatestArticleComponent>
-
+    
         </LatestArticleComponent>
       </div>
       <div className="w-full h-fit">
         <NewsLetterComponent></NewsLetterComponent>
-
+    
       </div>
-
+    
       <div className="w-full h-fit">
         <InstagramNewsFeedComponent></InstagramNewsFeedComponent>
-
+    
       </div>
-    </div>
-  );
+    </div>)
 }

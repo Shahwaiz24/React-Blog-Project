@@ -102,13 +102,13 @@ async login({ email, password }) {
     }
 }
 
- async getUser({ UserdocId,dispatch }) {
+ async getUser({ userId,dispatch }) {
    try {
        // Fetch the document using the provided document ID
-       let userDocument = await this.databases.getDocument(
+       let userDocument = await this.database.getDocument(
            config.BACKEND_DATABASE_ID,
            config.BACKEND_USER_COLLECTION_ID,
-           UserdocId.toString()
+           userId.toString()
        );
 
        if (userDocument) {
@@ -125,7 +125,7 @@ async login({ email, password }) {
      }));
            return true;
        } else {
-           console.log("Failed to fetch document for ID:", UserdocId);
+           console.log("Failed to fetch document for ID:", userId);
            return false; // Document not found
        }
    } catch (error) {
