@@ -23,7 +23,7 @@ export default function FooterComponent() {
         <div className="w-full h-fit bg-black pb-10 px-6 sm:px-12 lg:px-20 xl:px-28 pt-20">
             {/* Top Section */}
             <div className="flex flex-wrap md:flex-nowrap gap-10">
-                {/* Left Section */}
+            {/* Left Section */}
                 <div className="w-full md:w-1/3 text-start">
                     <h1 className="text-white font-poppins font-medium text-lg sm:text-xl md:text-2xl lg:text-3xl">
                         3legant.
@@ -51,8 +51,8 @@ export default function FooterComponent() {
                 </div>
 
                 {/* Links Section */}
-                <div className="flex flex-wrap gap-10 w-full md:w-2/3">
-                    <div className="text-white flex flex-col gap-4">
+                <div className="flex flex-wrap sm:justify-center md:justify-end gap-10 w-full md:w-2/3">
+                <div className="text-white flex flex-col gap-4">
                         <h1 className="font-poppins font-medium text-base sm:text-lg md:text-xl lg:text-2xl">
                             Page
                         </h1>
