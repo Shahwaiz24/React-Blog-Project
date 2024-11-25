@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import NewsLetterbgImage from "../News-Letter/news-letter-images/news-letter.png";
+import "../global.css"
 
-export default function NewsLetterComponent({ img = NewsLetterbgImage }) {
+export default function NewsLetterComponent({ }) {
     const [emailField, setEmailField] = useState("");
 
     return (
-        <div className="relative w-full h-fit mt-10 py-10 bg-black">
+        <div className="w-full h-fit mt-10 py-32 home-letter-background ">
             {/* Background Image */}
-            <div className="w-full h-fit">
-                <img
-                    src={img}
-                    alt="Newsletter Background"
-                    className="w-full object-cover h-auto"
-                />
-            </div>
+           
 
             {/* Center Content */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 bg-black bg-opacity-0">
+            <div className=" home-max-res flex flex-col justify-center items-center text-center px-4 bg-black bg-opacity-0">
                 {/* Heading */}
                 <h1 className="text-white font-bold font-poppins text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                     Join Our Newsletter

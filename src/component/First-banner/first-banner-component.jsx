@@ -30,9 +30,9 @@ export default function FirstBannerComponent({img, islogin}){
       >
         
 
-          <div className="home-background w-full h-full flex items-center justify-start py-32 ">
+          <div className="home-banner-background w-full h-full flex items-center justify-start py-32 ">
           <div
-              className={`flex flex-col justify-center px-4 max-w-screen-xl sm:px-8 md:px-16 lg:px-32 space-y-5 transform transition-all duration-700 delay-300 ${bannerInView ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+              className={`home-max-res flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-32 space-y-5 transform transition-all duration-700 delay-300 ${bannerInView ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
               }`}>
              
                 <h1 className="text-white text-3xl sm:text-3xl md:text-5xl lg:text-7xl font-medium font-poppins leading-tight">

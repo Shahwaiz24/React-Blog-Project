@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import OfferBanner from "../Offer Banner/offer_banner_img.png";
 import { ButtonComponent } from "../Home";
+import "./banner.css"
 
 export default function OfferBannerComponent({ img = OfferBanner }) {
     const [timeRemaining, setTimeRemaining] = useState(["", "", ""]);
@@ -35,19 +36,19 @@ export default function OfferBannerComponent({ img = OfferBanner }) {
     }, []);
 
     return (
-        <div className="w-full h-fit flex flex-col md:flex-row justify-start">
+        <div className="w-full h-fit max-height flex  flex-col md:flex-row justify-start">
             {/* Left Image */}
             <div className="w-full md:w-6/12 h-auto ">
     <img 
         src={img} 
         alt="" 
-        className="object-contain w-full h-auto max-w-full max-h-full aspect-auto" 
+                    className="object-cover w-full h-auto max-w-full max-h-full " 
     />
 </div>
 
 
             {/* Right Content */}
-            <div className="bg-customBgOfferBanner px-5 sm:px-10 md:px-20 pt-10 sm:pt-16 md:pt-24 pb-10 flex flex-col justify-start w-full md:w-6/12">
+            <div className="bg-customBgOfferBanner px-5 sm:px-10 md:px-20  sm:py-16 md:py-24 flex flex-col justify-start w-full md:w-6/12">
                 <h1 className="text-customNavGreen font-poppins font-semibold text-base sm:text-lg md:text-xl lg:text-2xl pb-4">
                     Limited Edition
                 </h1>

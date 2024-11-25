@@ -1,7 +1,23 @@
 /* Home banner bg image */
-.home-background{
+.home-banner-background{
   background-image: url('./assets/home-banner.png');
   background-repeat: no-repeat; /* or repeat, repeat-x, repeat-y */
   background-position: center center; /* adjust position */
   background-size: cover; /* cover, contain, or specific size */
+}
+.home-letter-background{
+    background-image: url('./assets/news-letter.png');
+      background-repeat: no-repeat;
+      /* or repeat, repeat-x, repeat-y */
+      background-position: center center;
+      /* adjust position */
+      background-size: cover;
+      /* cover, contain, or specific size */
+}
+
+.home-max-res{
+      width: 100%;
+       max-width: 1680px;
+    margin: 0 auto !important;
+
 }
