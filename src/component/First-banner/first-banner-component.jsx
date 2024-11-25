@@ -1,8 +1,20 @@
 import React from "react";
 import { ButtonComponent } from "../Home";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 
-export default function FirstBannerComponent({img}){
+export default function FirstBannerComponent({img, islogin}){
+  const navigate = useNavigate();
+  let handleOnShoppingClick = async () => {
+ 
+    if (!islogin) {
+      navigate("/login");
+
+    } else {
+      console.log("User is Logged In");
+    }
+  };
+  
       // Intersection Observer for Banner Section
   const { ref: bannerRef, inView: bannerInView } = useInView({
     triggerOnce: true,

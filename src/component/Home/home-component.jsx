@@ -16,7 +16,6 @@ import FirstBannerComponent from "../First-banner/first-banner-component";
 import SliderComponent from "../Slider Component/slider-component";
 
 export default function HomeComponent() {
-  const [showLoginFoam, setShowLoginFoam] = useState(false);
   const bannerImages = [
     HomeBannerImage1,
     HomeBannerImage2,
@@ -166,35 +165,18 @@ export default function HomeComponent() {
 
 
   const isLogin = useSelector((state) => state.auth.status);
-  const navigate = useNavigate();
-  let checkLogin = () => {
-    if (showLoginFoam == true) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
 
 
-  let handleOnShoppingClick = async () => {
-    let checking = await checkLogin();
-    if (!checking) {
-      setShowLoginFoam(false);
-      navigate("/login");
-    } else {
-      console.log("User is Logged In");
-    }
-  };
+
+
 
   useEffect(() => {
     bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
     console.log("Banner Image Index : ", bannerImageIndex);
     if (isLogin) {
-      setShowLoginFoam(false);
       console.log("Login is True");
     } else {
-      setShowLoginFoam(true);
       console.log("User Not Logged In, Showing Foam");
     }
   }, []);
@@ -203,7 +185,7 @@ export default function HomeComponent() {
     <div className="h-full w-full">
       {/* First Banner Container */}
       <div className="w-full h-fit">
-      <FirstBannerComponent img={bannerImages[bannerImageIndex]}></FirstBannerComponent>
+      <FirstBannerComponent img={bannerImages[bannerImageIndex]} islogin={isLogin}></FirstBannerComponent>
       </div>
      
 
