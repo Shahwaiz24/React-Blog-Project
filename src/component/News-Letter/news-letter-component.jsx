@@ -5,7 +5,7 @@ export default function NewsLetterComponent({ img = NewsLetterbgImage }) {
     const [emailField, setEmailField] = useState("");
 
     return (
-        <div className="relative w-full h-fit mt-10 bg-black">
+        <div className="relative w-full h-fit mt-10 py-10 bg-black">
             {/* Background Image */}
             <div className="w-full h-fit">
                 <img
