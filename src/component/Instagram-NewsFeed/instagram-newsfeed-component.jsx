@@ -1,11 +1,12 @@
 import React from "react";
 import NewsFeedPic from "../Instagram-NewsFeed/instagram-feed-images/last-section-img.png";
+import "../global.css"
 
 export default function InstagramNewsFeedComponent({ img = NewsFeedPic }) {
     return (
         <div className="w-full h-fit pt-8 bg-white">
             {/* Text Section */}
-            <div className="text-center px-4 sm:px-8 lg:px-16">
+            <div className="text-center home-max-res px-4 sm:px-8 lg:px-16">
                 {/* Newsfeed Title */}
                 <h1 className="font-poppins font-bold text-base sm:text-lg md:text-xl lg:text-xl text-gray-500">
                     Newsfeed
@@ -28,13 +29,13 @@ export default function InstagramNewsFeedComponent({ img = NewsFeedPic }) {
             </div>
 
             {/* Image Section */}
-            <div className="w-full h-fit pt-5">
+            
                 <img
                     src={img}
                     alt="Instagram Feed"
-                    className="w-full h-auto object-cover"
+                className="w-full max-height pt-5 h-auto object-cover"
                 />
-            </div>
+        
         </div>
     );
 }

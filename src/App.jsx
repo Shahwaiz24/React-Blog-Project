@@ -9,11 +9,11 @@ function App() {
   return (
     <>
       
-       <div>
+       
           <  HeaderComponent />
         {isloading == true ? <LoaderComponent /> : <Outlet/> } 
           <FooterComponent/>
-        </div>
+       
       
     </>
   )

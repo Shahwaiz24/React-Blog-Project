@@ -21,3 +21,6 @@
     margin: 0 auto !important;
 
 }
+.max-height {
+  max-height: 850px;
+}

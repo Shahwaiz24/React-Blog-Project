@@ -212,7 +212,7 @@ getUserData(userId);
       </div>
       {/* Catogries Section */}
         <div className="w-full h-fit home-max-res bg-white text-center pt-20 pb-10 px-40">
-        <h1 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-4xl pb-8 sm:pb-12 md:pb-16 text-center">
+        <h1 className="font-poppins font-semibold text-xl sm:text-2xl md:text-3xl pb-8 sm:pb-12 md:pb-16 text-center">
           Shop by Categories
         </h1>
     
@@ -239,7 +239,7 @@ getUserData(userId);
     
       </div>
     
-      <div className="w-full h-fit">
+        <div className="w-full  h-fit">
         <InstagramNewsFeedComponent></InstagramNewsFeedComponent>
     
       </div>
