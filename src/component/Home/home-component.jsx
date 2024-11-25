@@ -5,7 +5,7 @@ import {
   HomeBannerImage3,
   HomeBannerImage4,
   ShopCollection,} from ".";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate} from "react-router-dom";
 import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 import OfferBannerComponent from "../Offer Banner/offer_banner_component";
@@ -14,6 +14,7 @@ import NewsLetterComponent from "../News-Letter/news-letter-component";
 import InstagramNewsFeedComponent from "../Instagram-NewsFeed/instagram-newsfeed-component";
 import FirstBannerComponent from "../First-banner/first-banner-component";
 import SliderComponent from "../Slider Component/slider-component";
+import { login } from "../../services/Slices/Auth-Slices";
 
 export default function HomeComponent() {
   const bannerImages = [
@@ -161,10 +162,9 @@ export default function HomeComponent() {
       description: "True wireless earbuds with noise-cancelling technology for an immersive music experience."
     },
   ];
-  let     bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
+  let bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
+  const dispatch = useDispatch(login());
 
-
-  const isLogin = useSelector((state) => state.auth.status);
 
 
 
@@ -173,13 +173,16 @@ export default function HomeComponent() {
 
   useEffect(() => {
     bannerImageIndex = Math.floor(Math.random() * bannerImages.length);
-    console.log("Banner Image Index : ", bannerImageIndex);
-    if (isLogin) {
-      console.log("Login is True");
+let isUserlogin = localStorage.getItem("userId");
+    if (isUserlogin) {
+      dispatch(login());
+      console.log(" User Is Login ");
+
     } else {
-      console.log("User Not Logged In, Showing Foam");
+      console.log("User Not Logged In");
     }
   }, []);
+  const isLogin = useSelector((state) => state.auth.status);
 
   return (
     <div className="h-full w-full">

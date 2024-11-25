@@ -13,7 +13,7 @@ const authSlice = createSlice({
     reducers:{
         login: (state,action) => {
              state.status = true;
-             state.userId = JSON.parse(localStorage.getItem("userId"));
+             state.userId = localStorage.getItem("userId");
              console.log("Status Login : ", state.status, " User Data: ", state.userData);
            
         },

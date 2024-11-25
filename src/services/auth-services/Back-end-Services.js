@@ -1,4 +1,4 @@
-import { Client, Account, ID, Databases } from "appwrite";
+import { Client, Account, ID, Databases,Query } from "appwrite";
 import config from "../../config/Confg-Variable";
 import { login, saveUserData } from "../Slices/Auth-Slices";
 
@@ -21,31 +21,46 @@ export default class BackEndAuthService {
             return false; // Early exit if parameters are invalid
         }
 
-            let createUser = await this.database.createDocument(
-                config.BACKEND_DATABASE_ID,
-                config.BACKEND_USER_COLLECTION_ID,
-                ID.unique(),
-                {
-                    name: name.toString(),
-                    email: email.toString(),
-                    password: password.toString(),
-                }
-            );
+        // Check if a user with the same email already exists
+        const existingUsers = await this.database.listDocuments(
+            config.BACKEND_DATABASE_ID,
+            config.BACKEND_USER_COLLECTION_ID,
+            [
+                Query.equal('email', email)
+            ]
+        );
 
-            if (createUser) {
-                localStorage.setItem("userId", createUser.$id);
-                console.log("User successfully signed up with email:", email ," And Id : ",localStorage.getItem("userId"));
-                return true; // Success
-            } else {
-                console.error("Failed to create user document for:", email);
-                return false;
+        if (existingUsers.documents && existingUsers.documents.length > 0) {
+            console.error("Sign-Up Error: User with this email already exists:", email);
+            return false; // User already exists
+        }
+
+        // Create the user document
+        const createUser = await this.database.createDocument(
+            config.BACKEND_DATABASE_ID,
+            config.BACKEND_USER_COLLECTION_ID,
+            ID.unique(),
+            {
+                name: name.toString(),
+                email: email.toString(),
+                password: password.toString(),
             }
-       
+        );
+
+        if (createUser) {
+            localStorage.setItem("userId", createUser.$id);
+            console.log("User successfully signed up with email:", email, "And Id:", localStorage.getItem("userId"));
+            return true; // Success
+        } else {
+            console.error("Failed to create user document for:", email);
+            return false;
+        }
     } catch (error) {
         console.error("Sign-Up Error:", error.message);
         return false; // Error occurred
     }
 }
+
 
 
   
