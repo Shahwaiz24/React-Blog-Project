@@ -1,11 +1,9 @@
 import { Client, Account, ID, Databases } from "appwrite";
 import config from "../../config/Confg-Variable";
-import { useDispatch } from "react-redux";
 import { login, saveUserData } from "../Slices/Auth-Slices";
 
 export default class BackEndAuthService {
    client = new Client();
-   dispatch = useDispatch();
    account;
    database;
    constructor(){
@@ -15,43 +13,43 @@ export default class BackEndAuthService {
     this.database = new Databases(this.client);
    }
    
-   static async signUp({ email, password, name }) {
-      try {
+   async signUp({ email, password, name }) {
+    try {
+        // Validate required parameters
+        if (!email || !password || !name) {
+            console.error("Sign-Up Error: Missing required fields");
+            return false; // Early exit if parameters are invalid
+        }
 
-          let response = await this.account.create(ID.unique(), email.toString(), password.toString());
-  
-          if (response) {
+            let createUser = await this.database.createDocument(
+                config.BACKEND_DATABASE_ID,
+                config.BACKEND_USER_COLLECTION_ID,
+                ID.unique(),
+                {
+                    name: name.toString(),
+                    email: email.toString(),
+                    password: password.toString(),
+                }
+            );
 
-              let createUser = await this.databases.createDocument(
-                  config.BACKEND_DATABASE_ID,
-                  config.BACKEND_USER_COLLECTION_ID,
-                  ID.unique(),
-                  {
-                      name: name.toString(),
-                      email: email.toString(),
-                      password: password.toString(),
-                  }
-              );
+            if (createUser) {
+                localStorage.setItem("userId", createUser.$id);
+                console.log("User successfully signed up with email:", email ," And Id : ",localStorage.getItem("userId"));
+                return true; // Success
+            } else {
+                console.error("Failed to create user document for:", email);
+                return false;
+            }
+       
+    } catch (error) {
+        console.error("Sign-Up Error:", error.message);
+        return false; // Error occurred
+    }
+}
+
+
   
-              if (createUser) {
-                  localStorage.setItem("userId", JSON.stringify(createUser.$id));
-                  console.log("User successfully signed up with email:", email);
-                  return true; // Success
-              } else {
-                  console.log("Failed to create user document for:", email);
-                  return false; 
-              }
-          } else {
-              console.log("Failed to create Appwrite account for:", email);
-              return false; 
-          }
-      } catch (error) {
-          console.error("Sign-Up Error:", error.message || error.toString());
-          return false; // Error occurred
-      }
-  }
-  
-  static async login({ email, password }) {
+   async login({ email, password }) {
    try {
        // Fetch all documents from the user collection
        let documents = await this.databases.listDocuments(
@@ -93,7 +91,7 @@ export default class BackEndAuthService {
    }
 }
 
-static async getUser({ UserdocId,dispatch }) {
+ async getUser({ UserdocId,dispatch }) {
    try {
        // Fetch the document using the provided document ID
        let userDocument = await this.databases.getDocument(
@@ -125,7 +123,7 @@ static async getUser({ UserdocId,dispatch }) {
    }
 }
 
-   static async logoutUser(){
+    async logoutUser(){
       try {
          let response = await this.account.deleteSessions();
          if(response){
@@ -140,5 +138,8 @@ static async getUser({ UserdocId,dispatch }) {
 return false;
       }
    }
+   
 }
+
+export const  AuthService = new BackEndAuthService();
 

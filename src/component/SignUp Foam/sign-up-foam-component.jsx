@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputFieldsComponent from "../Input Fields/input-fields-component";
 import { ButtonComponent } from "../Home";
-import BackEndAuthService from "../../services/auth-services/Back-end-Services";
+import { AuthService } from "../../services/auth-services/Back-end-Services";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../services/Slices/Auth-Slices";
 
@@ -42,7 +42,7 @@ export default function SignUpFoamComponent() {
         console.log("Email:", email);
         console.log("Password:", password);
         console.log("Name: ", name)
-        let signUpRequest = await BackEndAuthService.signUp(email.toString(), password.toString(), name.toString())
+        let signUpRequest = await AuthService.signUp({email:email.toString(), password:password.toString(), name:name.toString()})
         if (signUpRequest == true) {
             setLoading(false);
             setEmail("");

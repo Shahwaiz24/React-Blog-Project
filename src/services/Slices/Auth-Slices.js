@@ -19,7 +19,7 @@ const authSlice = createSlice({
         },
         signUp: (state, action) => {
             state.status = true;
-            state.userId = JSON.parse(localStorage.getItem("userId"));
+            state.userId = localStorage.getItem("userId");
         },
         logout: (state, action) => {
             state.status = false;
