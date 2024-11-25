@@ -1,0 +1,7 @@
+/* Home banner bg image */
+.home-background{
+  background-image: url('./assets/home-banner.png');
+  background-repeat: no-repeat; /* or repeat, repeat-x, repeat-y */
+  background-position: center center; /* adjust position */
+  background-size: cover; /* cover, contain, or specific size */
+}

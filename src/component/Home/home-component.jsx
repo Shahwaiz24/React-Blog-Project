@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  HomeBannerImage1,
   HomeBannerImage2,
   HomeBannerImage3,
   HomeBannerImage4,
   ShopCollection,} from ".";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate} from "react-router-dom";
 import CatogriesGridComponent from "../Grid Component/catogries-grid-component";
 import OfferBannerComponent from "../Offer Banner/offer_banner_component";
 import LatestArticleComponent from "../Article/latest-article-component";
@@ -20,7 +18,6 @@ import LoaderComponent from "../Loader/loader-component";
 
 export default function HomeComponent() {
   const bannerImages = [
-    HomeBannerImage1,
     HomeBannerImage2,
     HomeBannerImage3,
     HomeBannerImage4
@@ -199,9 +196,11 @@ getUserData(userId);
   const isLogin = useSelector((state) => state.auth.status);
 
   return isLoading == true ? (<LoaderComponent></LoaderComponent>) : 
-   ( <div className="h-full w-full">
+    (
+      
+      <div className="h-full w-full">
       {/* First Banner Container */}
-      <div className="w-full h-fit">
+        <div className="w-full  h-fit">
       <FirstBannerComponent img={bannerImages[bannerImageIndex]} islogin={isLogin}></FirstBannerComponent>
       </div>
      

@@ -13,6 +13,9 @@ export default {
         customBgOfferBanner: "#141718",
         customRatingStarNonFill:"#343839"
       },
+      firstbannerbg:{
+        hero: "url('./home-Images/home-First-Banner-3.png')"
+      },
       fontFamily: {
         sans: ['Roboto', 'Arial', 'sans-serif'],
         poppins: ['Poppins'],
