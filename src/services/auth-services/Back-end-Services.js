@@ -64,46 +64,42 @@ export default class BackEndAuthService {
 
 
   
-   async login({ email, password }) {
-   try {
-       // Fetch all documents from the user collection
-       let documents = await this.databases.listDocuments(
-           config.BACKEND_DATABASE_ID,
-           config.BACKEND_USER_COLLECTION_ID
-       );
+async login({ email, password }) {
+    try {
+        // Validate required parameters
+        if (!email || !password) {
+            console.error("Login Error: Missing email or password");
+            return false; // Early exit if parameters are invalid
+        }
 
-       if (documents && documents.total > 0) {
-           // Find a document where email and password match
-           let userDocument = documents.documents.find(
-               (doc) => doc.email === email && doc.password === password
-           );
+        // Check if a user with the provided email exists
+        const documents = await this.database.listDocuments(
+            config.BACKEND_DATABASE_ID,
+            config.BACKEND_USER_COLLECTION_ID,
+            [Query.equal("email", email)]
+        );
 
-           if (userDocument) {
-               localStorage.setItem("userId",JSON.stringify(userDocument.$id));
-               let session = await this.account.createEmailPasswordSession(
-                   email.toString(),
-                   password.toString()
-               );
+        if (documents.documents && documents.documents.length > 0) {
+            // Retrieve the user document
+            const userDocument = documents.documents[0];
 
-               if (session) {
-                   console.log("Login successful for:", email);
-                   return true; // Login successful
-               } else {
-                   console.log("Session creation failed for:", email);
-                   return false; // Session creation failed
-               }
-           } else {
-               console.log("Invalid email or password for:", email);
-               return false; // Email or password does not match
-           }
-       } else {
-           console.log("No users found in the database.");
-           return false; // No documents in the user collection
-       }
-   } catch (error) {
-       console.error("Login Error:", error.message || error.toString());
-       return false; // Error occurred
-   }
+            // Match password
+            if (userDocument.password === password) {
+                localStorage.setItem("userId", userDocument.$id);
+                console.log("Success")
+                return true;
+            } else {
+                console.error("Invalid password for:", email);
+                return false; // Password does not match
+            }
+        } else {
+            console.error("No user found with email:", email);
+            return false; // No user found with the provided email
+        }
+    } catch (error) {
+        console.error("Login Error:", error.message || error.toString());
+        return false; // Error occurred
+    }
 }
 
  async getUser({ UserdocId,dispatch }) {

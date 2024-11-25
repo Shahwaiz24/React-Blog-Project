@@ -29,16 +29,16 @@ export default function HeaderComponent() {
 
                         {/* Center section - Navigation Menu */}
                         <nav className={`flex-grow justify-center items-center space-x-4 md:flex-row md:space-x-6 ${open ? 'flex' : 'hidden'} md:flex`}>
-                            <Link to="/" className={`px-4 py-2 mt-2 text-sm font-poppins font-light text-black bg-transparent rounded-lg ${isActive('')}`}>
+                            <Link to="/" className={`px-4 py-2 mt-2 text-sm font-poppins font-light text-black bg-transparent rounded-lg ${isActive('/')}`}>
                                 Home
                             </Link>
-                            <Link to="/" className={`px-4 py-2 mt-2 font-poppins font-light text-sm bg-transparent text-black rounded-lg ${isActive('')}`}>
+                            <Link to="/" className={`px-4 py-2 mt-2 font-poppins font-light text-sm bg-transparent text-black rounded-lg ${isActive('/shop')}`}>
                                 Shop
                             </Link>
-                            <Link to="/" className={`px-4 py-2 mt-2 text-sm  font-poppins font-light bg-transparent text-black rounded-lg ${isActive('')}`}>
+                            <Link to="/" className={`px-4 py-2 mt-2 text-sm  font-poppins font-light bg-transparent text-black rounded-lg ${isActive('/product')}`}>
                                 Product
                             </Link>
-                            <Link to="/" className={`px-4 py-2 mt-2 text-sm font-poppins font-light text-black bg-transparent rounded-lg ${isActive('')}`}>
+                            <Link to="/" className={`px-4 py-2 mt-2 text-sm font-poppins font-light text-black bg-transparent rounded-lg ${isActive('/contact-us')}`}>
                                 Contact Us
                             </Link>
                         </nav>
