@@ -33,7 +33,7 @@ export default function InstagramNewsFeedComponent({ img = NewsFeedPic }) {
                 <img
                     src={img}
                     alt="Instagram Feed"
-                className="w-full max-height pt-5 h-auto object-cover"
+                className="w-full max-height  pt-5 h-auto object-cover"
                 />
         
         </div>
