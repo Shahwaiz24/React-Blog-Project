@@ -36,19 +36,19 @@ export default function OfferBannerComponent({ img = OfferBanner }) {
     }, []);
 
     return (
-        <div className="w-full h-fit flex flex-col md:flex-row justify-start">
+        <div className="w-full  h-fit flex flex-col md:flex-row justify-start">
             {/* Left Image */}
-            <div className="w-full h-fit max-height md:w-6/12 ">
+            <div className="w-full h-fit md:w-6/12 ">
     <img 
         src={img} 
         alt="" 
-                    className="object-cover w-full h-auto"
+                    className="object-cover aspect-[1.6] max-height min-h-[600px] w-full h-auto "
     />
 </div>
 
 
             {/* Right Content */}
-            <div className="bg-customBgOfferBanner max-height px-5 py-10  sm:px-10 md:px-20  sm:py-16 md:py-24  w-full md:w-6/12">
+            <div className="bg-customBgOfferBanner px-5 py-10  sm:px-10 md:px-20 max-height  sm:py-16 md:py-24  w-full md:w-6/12">
                 <h1 className="text-customNavGreen font-poppins font-semibold text-base sm:text-lg md:text-xl lg:text-2xl pb-4">
                     Limited Edition
                 </h1>

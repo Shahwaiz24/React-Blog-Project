@@ -220,7 +220,7 @@ getUserData(userId);
     
       </div>
       {/* Offer Section */}
-      <div className="w-full  h-fit">
+        <div className="w-full  h-fit">
         <OfferBannerComponent></OfferBannerComponent>
       </div>
       {/* Collection Section */}
